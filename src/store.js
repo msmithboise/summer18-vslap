@@ -22,9 +22,9 @@ export default new Vuex.Store({
       name: "Vendr",
       balance: 0,
       money: {
-        nickel: .5,
-        dime: .10,
-        quarter: .25,
+        "5¢": .5,
+        "10¢": .10,
+        "25¢": .25,
       },
       items: {
         cheetos: .75,
