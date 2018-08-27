@@ -11,4 +11,8 @@ export default class Machine {
           this.balance += this.money[type]
         }
       }
+
+      getChange(){
+          this.balance += 0
+      }
 }

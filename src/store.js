@@ -22,21 +22,30 @@ export default new Vuex.Store({
       name: "Vendr",
       balance: 0,
       money: {
-        nickel: 5,
-        dime: 10,
-        quarter: 25,
-      }
-      
+        nickel: .5,
+        dime: .10,
+        quarter: .25,
+      },
+      items: {
+        cheetos: .75,
+        fritos: .50,
+        mountainDew: 1.50,
+      },
+
     })
   },
   mutations: {
     setHealth(state, actualHealth) {
       state.target.health = actualHealth
     },
-    
-    setBalance(state, actualBalance){
+
+    setBalance(state, actualBalance) {
       state.machine.balance = actualBalance
-      
+
+    },
+
+    getChange(state){
+      state.machine.balance = 0
     }
   },
 
@@ -48,11 +57,16 @@ export default new Vuex.Store({
       commit('setHealth', newHealth)
     },
 
-    addMoney({dispatch, commit, state}, moneyType) {
+    addMoney({ dispatch, commit, state }, moneyType) {
       let newBalance = state.machine.balance + state.machine.money[moneyType]
+      Math.floor(newBalance)
+
       commit('setBalance', newBalance)
+  },
 
-
+    getChange({dispatch, commit, state}, payload) {
+      let change = state.machine.balance + state.machine.balance[payload]
+      commit('getChange', change)
     }
 
 
