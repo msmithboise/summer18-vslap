@@ -50,7 +50,12 @@ export default {
         return;
       }
       this.target.items.push(item);
-    }
+    },
+
+ 
+
+
+
   },
   computed: {
     target() {
