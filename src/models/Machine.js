@@ -18,7 +18,8 @@ export default class Machine {
             img: 'https://www.myamericanmarket.com/6109-large_default/mountain-dew-soda.jpg',
             price: .75,
             quantity: 15
-          }]
+          }],
+          this.vended = true
          
         }
 

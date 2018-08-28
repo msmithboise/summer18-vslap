@@ -26,6 +26,7 @@ export default new Vuex.Store({
         "10¢": 0.10,
         "25¢": 0.25,
       },
+    
       
       
 
@@ -69,11 +70,20 @@ export default new Vuex.Store({
     },
 
     buyItems({dispatch, commit, state}, payload) {
-      let food = state.machine.items.cheetos.price
-      commit('setBalance', food)
+      if(state.machine.balance - payload.price >= 0){
+        let newBalance = state.machine.balance - payload.price 
+        commit('setBalance', newBalance)
+        state.machine.vended = true
+      }else {
+        state.machine.vended = false
+      }
+
     }
 
 
 
   }
 })
+
+
+  
