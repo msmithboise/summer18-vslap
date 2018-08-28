@@ -22,15 +22,12 @@ export default new Vuex.Store({
       name: "Vendr",
       balance: 0,
       money: {
-        "5¢": .5,
-        "10¢": .10,
-        "25¢": .25,
+        "5¢": .05,
+        "10¢": 0.10,
+        "25¢": 0.25,
       },
-      items: {
-        cheetos: .75,
-        fritos: .50,
-        mountainDew: 1.50,
-      },
+      
+      
 
     })
   },
@@ -47,6 +44,8 @@ export default new Vuex.Store({
     getChange(state){
       state.machine.balance = 0
     }
+
+
   },
 
 
@@ -67,6 +66,11 @@ export default new Vuex.Store({
     getChange({dispatch, commit, state}, payload) {
       let change = state.machine.balance + state.machine.balance[payload]
       commit('getChange', change)
+    },
+
+    buyItems({dispatch, commit, state}, payload) {
+      let food = state.machine.items.cheetos.price
+      commit('setBalance', food)
     }
 
 

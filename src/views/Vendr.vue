@@ -4,20 +4,22 @@
       <div class="col-sm-12">
     <h1>Hello, I am Vendr {{machine.name}}</h1>
     <h1>Your remaining balance is: ${{machine.balance}}</h1>
+    
   </div>
 </div>
     <div class="money row">
       <button v-for="(value, key) in machine.money" :key="key" @click="addMoney(key)">{{key}}</button>
+      <button @click="getChange()">Get Change</button>
 
     </div>
     <div class="get-change row">
-      <button @click="getChange()">Get Change</button>
+      <div class="items col-sm-4">
+          <img :src="machine.foodItems[0].img">
+          <img :src="machine.foodItems[1].img">
+          <img :src="machine.foodItems[2].img">
+        </div>
     </div>
-<div class="items row">
-    <img src="https://www.dollargeneral.com/media/catalog/product/cache/image/700x700/e9c3970ab036de70892d86c6d221abfe/0/0/00028400589284_0.jpg" alt="">
-
-<img src="http://www.mountaindew.com/assets/content/38195/20881/21892-grew-dew-product.png" alt="">
-
+  
   </div>
 </div>
 
@@ -28,6 +30,8 @@
 
 <script>
   export default {
+  
+   
     methods: {
       addMoney(add) {
         this.$store.dispatch("addMoney", add);
@@ -35,6 +39,10 @@
 
       getChange(subtract) {
         this.$store.dispatch("getChange", subtract);
+      },
+
+      buyItems(item) {
+        this.$store.dispatch("buyItems", item)
       }
 
 
@@ -58,7 +66,8 @@ h1{
 .items{
     display: flex;
     justify-content: center;
-    
+    height:  400px;
+    width: 50px;
     
     
 }
